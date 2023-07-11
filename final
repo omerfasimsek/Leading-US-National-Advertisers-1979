@@ -1,0 +1,437 @@
+MY DATA
+
+Leading US National Advertisers 1979
+
+Advertiser	Total Ad Dollars ($MM)
+Procter & Gamble	615
+General Foods	393
+Sears, Roebuck	379
+General Motors	323
+Philip Morris	291
+K mart	287
+R. J. Reynolds	258
+Warner-Lambert	220
+American Telephone & Telegraph	220
+Ford Motor	215
+PepsiCo	212
+Bristol-Myers	211
+American Home Products	206
+McDonald's	203
+Gulf + Western Industries	192
+General Mills	191
+Esmark	171
+Coca-Cola	169
+Seagram	168
+Mobil	166
+Norton Simon	163
+Anheuser-Busch	161
+Unilever U.S.	160
+RCA	159
+Johnson & Johnson	158
+Heublein	155
+Beatrice Foods	150
+CBS	146
+U.S. Government	146
+Loews	145
+General Electric	139
+International Telephone & Telegraph	132
+Pillsbury	132
+American Cyanamid	127
+Gillette	127
+Richardson-Merrell	124
+Colgate-Palmolive	123
+J. C. Penney	122
+Kraft	120
+Chrysler	118
+B.A.T. Industries	116
+Ralston Purina	108
+SmithKline	108
+Chesebrough-Pond's	107
+Consolidated Foods	105
+Time	102
+Revlon	101
+Transamerica	95
+Sterling Drug	92
+Kellogg	92
+Nabisco	91
+DuPont	89
+Eastman Kodak	88
+Quaker Oats	87
+Nestle	86
+American Brands	84
+Toyota Motor Sales U.S.A.	80
+Schering-Plough	78
+Miles Laboratories	78
+Clorox	73
+CPC International	72
+Jos. Schlitz Brewing	72
+H. J. Heinz	72
+Mars	70
+Nissan Motor	66
+MCA	66
+Mattel	66
+Trans World	62
+Campbell Soup	61
+Squibb	60
+Liggett Group	59
+Warner Communications	58
+American Express	55
+Union Carbide	55
+Volkswagen of America	55
+
+
+
+
+
+
+
+
+
+
+import pandas as pd
+
+# Load the dataset into a pandas DataFrame
+data = {
+    'Advertiser': ['Procter & Gamble', 'General Foods', 'Sears, Roebuck', 'General Motors', 'Philip Morris', 'K mart', 'R. J. Reynolds', 'Warner-Lambert', 'American Telephone & Telegraph', 'Ford Motor', 'PepsiCo', 'Bristol-Myers', 'American Home Products', 'McDonald\'s', 'Gulf + Western Industries', 'General Mills', 'Esmark', 'Coca-Cola', 'Seagram', 'Mobil', 'Norton Simon', 'Anheuser-Busch', 'Unilever U.S.', 'RCA', 'Johnson & Johnson', 'Heublein', 'Beatrice Foods', 'CBS', 'U.S. Government', 'Loews', 'General Electric', 'International Telephone & Telegraph', 'Pillsbury', 'American Cyanamid', 'Gillette', 'Richardson-Merrell', 'Colgate-Palmolive', 'J. C. Penney', 'Kraft', 'Chrysler', 'B.A.T. Industries', 'Ralston Purina', 'SmithKline', 'Chesebrough-Pond\'s', 'Consolidated Foods', 'Time', 'Revlon', 'Transamerica', 'Sterling Drug', 'Kellogg', 'Nabisco', 'DuPont', 'Eastman Kodak', 'Quaker Oats', 'Nestle', 'American Brands', 'Toyota Motor Sales U.S.A.', 'Schering-Plough', 'Miles Laboratories', 'Clorox', 'CPC International', 'Jos. Schlitz Brewing', 'H. J. Heinz', 'Mars', 'Nissan Motor', 'MCA', 'Mattel', 'Trans World', 'Campbell Soup', 'Squibb', 'Liggett Group', 'Warner Communications', 'American Express', 'Union Carbide', 'Volkswagen of America'],
+    'Total Ad Dollars ($MM)': [615, 393, 379, 323, 291, 287, 258, 220, 220, 215, 212, 211, 206, 203, 192, 191, 171, 169, 168, 166, 163, 161, 160, 159, 158, 155, 150, 146, 146, 145, 139, 132, 132, 127, 127, 124, 123, 122, 120, 118, 116, 108, 108, 107, 105, 102, 101, 95, 92, 92, 91, 89, 88, 87, 86, 84, 80, 78, 78, 73, 72, 72, 72, 70, 66, 66, 66, 62, 61, 60, 59, 58, 55, 55, 55]
+}
+
+df = pd.DataFrame(data)
+
+# Display the first few rows of the DataFrame
+print(df.head())
+
+# Get basic statistics of the numerical column
+print(df['Total Ad Dollars ($MM)'].describe())
+
+ 
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataset into a pandas DataFrame
+data = {
+    'Advertiser': ['Procter & Gamble', 'General Foods', 'Sears, Roebuck', 'General Motors', 'Philip Morris', 'K mart', 'R. J. Reynolds', 'Warner-Lambert', 'American Telephone & Telegraph', 'Ford Motor', 'PepsiCo', 'Bristol-Myers', 'American Home Products', 'McDonald\'s', 'Gulf + Western Industries', 'General Mills', 'Esmark', 'Coca-Cola', 'Seagram', 'Mobil', 'Norton Simon', 'Anheuser-Busch', 'Unilever U.S.', 'RCA', 'Johnson & Johnson', 'Heublein', 'Beatrice Foods', 'CBS', 'U.S. Government', 'Loews', 'General Electric', 'International Telephone & Telegraph', 'Pillsbury', 'American Cyanamid', 'Gillette', 'Richardson-Merrell', 'Colgate-Palmolive', 'J. C. Penney', 'Kraft', 'Chrysler', 'B.A.T. Industries', 'Ralston Purina', 'SmithKline', 'Chesebrough-Pond\'s', 'Consolidated Foods', 'Time', 'Revlon', 'Transamerica', 'Sterling Drug', 'Kellogg', 'Nabisco', 'DuPont', 'Eastman Kodak', 'Quaker Oats', 'Nestle', 'American Brands', 'Toyota Motor Sales U.S.A.', 'Schering-Plough', 'Miles Laboratories', 'Clorox', 'CPC International', 'Jos. Schlitz Brewing', 'H. J. Heinz', 'Mars', 'Nissan Motor', 'MCA', 'Mattel', 'Trans World', 'Campbell Soup', 'Squibb', 'Liggett Group', 'Warner Communications', 'American Express', 'Union Carbide', 'Volkswagen of America'],
+    'Total Ad Dollars ($MM)': [615, 393, 379, 323, 291, 287, 258, 220, 220, 215, 212, 211, 206, 203, 192, 191, 171, 169, 168, 166, 163, 161, 160, 159, 158, 155, 150, 146, 146, 145, 139, 132, 132, 127, 127, 124, 123, 122, 120, 118, 116, 108, 108, 107, 105, 102, 101, 95, 92, 92, 91, 89, 88, 87, 86, 84, 80, 78, 78, 73, 72, 72, 72, 70, 66, 66, 66, 62, 61, 60, 59, 58, 55, 55, 55]
+}
+df = pd.DataFrame(data)
+
+# Data Visualization - Bar chart
+plt.figure(figsize=(12, 6))
+plt.bar(df['Advertiser'], df['Total Ad Dollars ($MM)'])
+plt.xticks(rotation=90)
+plt.xlabel('Advertiser')
+plt.ylabel('Total Ad Dollars ($MM)')
+plt.title('Total Ad Dollars Spent by Advertisers')
+plt.show()
+
+# Top Advertisers
+top_advertisers = df.nlargest(5, 'Total Ad Dollars ($MM)')
+print("Top Advertisers:\n", top_advertisers)
+
+
+# Sector Analysis - Grouping by first word of Advertiser
+df['Sector'] = df['Advertiser'].str.split().str[0]
+sector_spending = df.groupby('Sector')['Total Ad Dollars ($MM)'].sum().sort_values(ascending=False)
+print("Sector-wise Spending:\n", sector_spending)
+
+ 
+
+ 
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Load the dataset into a pandas DataFrame
+data = {
+    'Advertiser': ['Procter & Gamble', 'General Foods', 'Sears, Roebuck', 'General Motors', 'Philip Morris', 'K mart', 'R. J. Reynolds', 'Warner-Lambert', 'American Telephone & Telegraph', 'Ford Motor', 'PepsiCo', 'Bristol-Myers', 'American Home Products', 'McDonald\'s', 'Gulf + Western Industries', 'General Mills', 'Esmark', 'Coca-Cola', 'Seagram', 'Mobil', 'Norton Simon', 'Anheuser-Busch', 'Unilever U.S.', 'RCA', 'Johnson & Johnson', 'Heublein', 'Beatrice Foods', 'CBS', 'U.S. Government', 'Loews', 'General Electric', 'International Telephone & Telegraph', 'Pillsbury', 'American Cyanamid', 'Gillette', 'Richardson-Merrell', 'Colgate-Palmolive', 'J. C. Penney', 'Kraft', 'Chrysler', 'B.A.T. Industries', 'Ralston Purina', 'SmithKline', 'Chesebrough-Pond\'s', 'Consolidated Foods', 'Time', 'Revlon', 'Transamerica', 'Sterling Drug', 'Kellogg', 'Nabisco', 'DuPont', 'Eastman Kodak', 'Quaker Oats', 'Nestle', 'American Brands', 'Toyota Motor Sales U.S.A.', 'Schering-Plough', 'Miles Laboratories', 'Clorox', 'CPC International', 'Jos. Schlitz Brewing', 'H. J. Heinz', 'Mars', 'Nissan Motor', 'MCA', 'Mattel', 'Trans World', 'Campbell Soup', 'Squibb', 'Liggett Group', 'Warner Communications', 'American Express', 'Union Carbide', 'Volkswagen of America'],
+    'Total Ad Dollars ($MM)': [615, 393, 379, 323, 291, 287, 258, 220, 220, 215, 212, 211, 206, 203, 192, 191, 171, 169, 168, 166, 163, 161, 160, 159, 158, 155, 150, 146, 146, 145, 139, 132, 132, 127, 127, 124, 123, 122, 120, 118, 116, 108, 108, 107, 105, 102, 101, 95, 92, 92, 91, 89, 88, 87, 86, 84, 80, 78, 78, 73, 72, 72, 72, 70, 66, 66, 66, 62, 61, 60, 59, 58, 55, 55, 55]
+}
+
+df = pd.DataFrame(data)
+
+# Descriptive Data Analysis
+print("Number of Advertisers:", len(df))
+print("Total Ad Dollars ($MM) Statistics:")
+print(df['Total Ad Dollars ($MM)'].describe())
+
+# Median
+median = df['Total Ad Dollars ($MM)'].median()
+print("Median Total Ad Dollars ($MM):", median)
+
+# Mode
+mode = df['Total Ad Dollars ($MM)'].mode()
+print("Mode Total Ad Dollars ($MM):", mode[0])
+
+# Range
+range_val = df['Total Ad Dollars ($MM)'].max() - df['Total Ad Dollars ($MM)'].min()
+print("Range of Total Ad Dollars ($MM):", range_val)
+# Variance
+variance = df['Total Ad Dollars ($MM)'].var()
+print("Variance of Total Ad Dollars ($MM):", variance)
+
+# Standard Deviation
+std_dev = df['Total Ad Dollars ($MM)'].std()
+print("Standard Deviation of Total Ad Dollars ($MM):", std_dev)
+ 
+# Data Visualization with Seaborn
+sns.set(style="whitegrid")
+plt.figure(figsize=(12, 6))
+sns.boxplot(x=df['Total Ad Dollars ($MM)'])
+plt.xlabel('Total Ad Dollars ($MM)')
+plt.title('Distribution of Total Ad Dollars')
+plt.show()
+
+sns.set(style="whitegrid")
+plt.figure(figsize=(12, 6))
+sns.histplot(df['Total Ad Dollars ($MM)'], kde=True)
+plt.xlabel('Total Ad Dollars ($MM)')
+plt.ylabel('Frequency')
+plt.title('Histogram of Total Ad Dollars')
+plt.show()
+ 
+ 
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import zscore
+
+Create a DataFrame from the dataset:
+data = {
+    'Advertiser': ['Procter & Gamble', 'General Foods', 'Sears, Roebuck', 'General Motors', 'Philip Morris', 'K mart', 'R. J. Reynolds', 'Warner-Lambert', 'American Telephone & Telegraph', 'Ford Motor', 'PepsiCo', 'Bristol-Myers', 'American Home Products', 'McDonald\'s', 'Gulf + Western Industries', 'General Mills', 'Esmark', 'Coca-Cola', 'Seagram', 'Mobil', 'Norton Simon', 'Anheuser-Busch', 'Unilever U.S.', 'RCA', 'Johnson & Johnson', 'Heublein', 'Beatrice Foods', 'CBS', 'U.S. Government', 'Loews', 'General Electric', 'International Telephone & Telegraph', 'Pillsbury', 'American Cyanamid', 'Gillette', 'Richardson-Merrell', 'Colgate-Palmolive', 'J. C. Penney', 'Kraft', 'Chrysler', 'B.A.T. Industries', 'Ralston Purina', 'SmithKline', 'Chesebrough-Pond\'s', 'Consolidated Foods', 'Time', 'Revlon', 'Transamerica', 'Sterling Drug', 'Kellogg', 'Nabisco', 'DuPont', 'Eastman Kodak', 'Quaker Oats', 'Nestle', 'American Brands', 'Toyota Motor Sales U.S.A.', 'Schering-Plough', 'Miles Laboratories', 'Clorox', 'CPC International', 'Jos. Schlitz Brewing', 'H. J. Heinz', 'Mars', 'Nissan Motor', 'MCA', 'Mattel', 'Trans World', 'Campbell Soup', 'Squibb', 'Liggett Group', 'Warner Communications', 'American Express', 'Union Carbide', 'Volkswagen of America'],
+    'Total Ad Dollars ($MM)': [615, 393, 379, 323, 291, 287, 258, 220, 220, 215, 212, 211, 206, 203, 192, 191, 171, 169, 168, 166, 163, 161, 160, 159, 158, 155, 150, 146, 146, 145, 139, 132, 132, 127, 127, 124, 123, 122, 120, 118, 116, 108, 108, 107, 105, 102, 101, 95, 92, 92, 91, 89, 88, 87, 86, 84, 80, 78, 78, 73, 72, 72, 72, 70, 66, 66, 66, 62, 61, 60, 59, 58, 55, 55, 55]
+}
+df = pd.DataFrame(data)
+Create a box plot to visualize the distribution:
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=df, y='Total Ad Dollars ($MM)')
+plt.title('Distribution of Total Ad Dollars')
+plt.ylabel('Total Ad Dollars ($MM)')
+plt.show()
+ 
+
+df['z_score'] = zscore(df['Total Ad Dollars ($MM)'])
+z_score_threshold = 3
+outliers_zscore = df.loc[abs(df['z_score']) > z_score_threshold]
+print("Outliers based on z-scores:")
+print(outliers_zscore)
+ 
+q1 = df['Total Ad Dollars ($MM)'].quantile(0.25)
+q3 = df['Total Ad Dollars ($MM)'].quantile(0.75)
+iqr = q3 - q1
+lower_bound = q1 - 1.5 * iqr
+upper_bound = q3 + 1.5 * iqr
+outliers_iqr = df.loc[(df['Total Ad Dollars ($MM)'] < lower_bound) | (df['Total Ad Dollars ($MM)'] > upper_bound)]
+print("Outliers based on IQR:")
+print(outliers_iqr)
+ 
+numerical_columns = ['Total Ad Dollars ($MM)']
+summary_stats = df[numerical_columns].describe()
+print("Summary Statistics:")
+print(summary_stats)
+ 
+
+top_5_advertisers = df.nlargest(5, 'Total Ad Dollars ($MM)')
+print("Top 5 Advertisers:")
+print(top_5_advertisers)
+
+ 
+
+plt.figure(figsize=(8, 8))
+plt.pie(top_5_advertisers['Total Ad Dollars ($MM)'], labels=top_5_advertisers['Advertiser'], autopct='%1.1f%%', startangle=90)
+plt.title('Top 5 Advertisers')
+plt.axis('equal')
+plt.show()
+ 
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+# Choose a specific advertiser
+advertiser = 'Coca-Cola'
+
+# Filter data for the chosen advertiser
+filtered_data = df[df['Advertiser'] == advertiser]
+
+# Sort data by Total Ad Dollars ($MM)
+sorted_data = filtered_data.sort_values(by='Total Ad Dollars ($MM)')
+
+# Plot line chart
+plt.figure(figsize=(12, 6))
+plt.plot(sorted_data.index, sorted_data['Total Ad Dollars ($MM)'], marker='o')
+plt.xlabel('Year')
+plt.ylabel('Total Ad Dollars ($MM)')
+plt.title(f'Total Ad Dollars for {advertiser}')
+plt.xticks(sorted_data.index, rotation=45)
+plt.grid(True)
+plt.show()
+ 
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Data Visualization with Seaborn
+
+# Bar plot
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Total Ad Dollars ($MM)', y='Advertiser', data=df, color='blue')
+plt.xlabel('Total Ad Dollars ($MM)')
+plt.ylabel('Advertiser')
+plt.title('Total Ad Dollars by Advertiser')
+plt.show()
+
+# Violin plot
+plt.figure(figsize=(12, 6))
+sns.violinplot(y='Advertiser', x='Total Ad Dollars ($MM)', data=df)
+plt.xlabel('Total Ad Dollars ($MM)')
+plt.ylabel('Advertiser')
+plt.title('Distribution of Total Ad Dollars by Advertiser')
+plt.show()
+
+# Scatter plot with categorical variable
+plt.figure(figsize=(12, 6))
+sns.scatterplot(x='Total Ad Dollars ($MM)', y='Advertiser', data=df, hue='Advertiser', palette='Set1')
+plt.xlabel('Total Ad Dollars ($MM)')
+plt.ylabel('Advertiser')
+plt.title('Total Ad Dollars by Advertiser')
+plt.legend(bbox_to_anchor=(1, 1), loc='upper left')
+plt.show()
+
+ 
+
+
+
+ 
+ 
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+# Create a DataFrame from the given data
+data = {
+    'Advertiser': [
+        'Procter & Gamble', 'General Foods', 'Sears, Roebuck', 'General Motors', 'Philip Morris',
+        'K mart', 'R. J. Reynolds', 'Warner-Lambert', 'American Telephone & Telegraph', 'Ford Motor',
+        'PepsiCo', 'Bristol-Myers', 'American Home Products', 'McDonald\'s', 'Gulf + Western Industries',
+        'General Mills', 'Esmark', 'Coca-Cola', 'Seagram', 'Mobil', 'Norton Simon', 'Anheuser-Busch',
+        'Unilever U.S.', 'RCA', 'Johnson & Johnson', 'Heublein', 'Beatrice Foods', 'CBS', 'U.S. Government',
+        'Loews', 'General Electric', 'International Telephone & Telegraph', 'Pillsbury', 'American Cyanamid',
+        'Gillette', 'Richardson-Merrell', 'Colgate-Palmolive', 'J. C. Penney', 'Kraft', 'Chrysler',
+        'B.A.T. Industries', 'Ralston Purina', 'SmithKline', 'Chesebrough-Pond\'s', 'Consolidated Foods',
+        'Time', 'Revlon', 'Transamerica', 'Sterling Drug', 'Kellogg', 'Nabisco', 'DuPont', 'Eastman Kodak',
+        'Quaker Oats', 'Nestle', 'American Brands', 'Toyota Motor Sales U.S.A.', 'Schering-Plough',
+        'Miles Laboratories', 'Clorox', 'CPC International', 'Jos. Schlitz Brewing', 'H. J. Heinz',
+        'Mars', 'Nissan Motor', 'MCA', 'Mattel', 'Trans World', 'Campbell Soup', 'Squibb', 'Liggett Group',
+        'Warner Communications', 'American Express', 'Union Carbide', 'Volkswagen of America'
+    ],
+    'Total Ad Dollars ($MM)': [
+        615, 393, 379, 323, 291, 287, 258, 220, 220, 215, 212, 211, 206, 203, 192, 191, 171, 169, 168,
+        166, 163, 161, 160, 159, 158, 155, 150, 146, 146, 145, 139, 132, 132, 127, 127, 124, 123, 122,
+        120, 118, 116, 108, 108, 107, 105, 102, 101, 95, 92, 92, 91, 89, 88, 87, 86, 84, 80, 78, 78, 73,
+        72, 72, 72, 70, 66, 66, 66, 62, 61, 60, 59, 58, 55, 55, 55
+    ]
+}
+
+df = pd.DataFrame(data)
+
+# Convert Total Ad Dollars ($MM) to numerical representation
+df['Total Ad Dollars ($MM)'] = pd.to_numeric(df['Total Ad Dollars ($MM)'], errors='coerce')
+
+# Selecting the numeric columns for filling missing values
+numeric_cols = ['Total Ad Dollars ($MM)']
+
+# Fill missing values with the mean of each column
+df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].mean())
+
+# Selecting the features and target variable
+X = df[['Advertiser']]  # Features
+y = df['Total Ad Dollars ($MM)']  # Target variable
+
+# Splitting the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X_encoded, y, test_size=0.2, random_state=42)
+
+# Creating and fitting the linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Making predictions on the test set
+y_pred = model.predict(X_test)
+
+# Evaluating the model
+score = model.score(X_test, y_test)
+print("R-squared:", score)
+
+# Assume 'X_new' is the new, unseen data
+X_new = pd.DataFrame({'Advertiser': ['IBM', 'Microsoft']})
+
+# Preprocess the new data
+X_new_encoded = ct.transform(X_new)
+
+# Load the trained model or retrain it using the entire dataset
+# (Uncomment the appropriate line depending on whether the model is already trained or not)
+# model = load_model('linear_regression_model.pkl')
+# model.fit(X_encoded, y)
+
+# Make predictions on the new data
+y_new_pred = model.predict(X_new_encoded)
+
+# Print the predictions
+print("Predictions for X_new:")
+for advertiser, prediction in zip(X_new['Advertiser'], y_new_pred):
+    print(advertiser + ": " + str(prediction))
+
+ 
+
+import pandas as pd
+import numpy as np
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+# Create a dataframe from the given dataset
+data = {
+    'Advertiser': [
+        'Procter & Gamble', 'General Foods', 'Sears, Roebuck', 'General Motors', 'Philip Morris',
+        'K mart', 'R. J. Reynolds', 'Warner-Lambert', 'American Telephone & Telegraph', 'Ford Motor',
+        'PepsiCo', 'Bristol-Myers', 'American Home Products', 'McDonald\'s', 'Gulf + Western Industries',
+        'General Mills', 'Esmark', 'Coca-Cola', 'Seagram', 'Mobil', 'Norton Simon', 'Anheuser-Busch',
+        'Unilever U.S.', 'RCA', 'Johnson & Johnson', 'Heublein', 'Beatrice Foods', 'CBS', 'U.S. Government',
+        'Loews', 'General Electric', 'International Telephone & Telegraph', 'Pillsbury', 'American Cyanamid',
+        'Gillette', 'Richardson-Merrell', 'Colgate-Palmolive', 'J. C. Penney', 'Kraft', 'Chrysler',
+        'B.A.T. Industries', 'Ralston Purina', 'SmithKline', 'Chesebrough-Pond\'s', 'Consolidated Foods',
+        'Time', 'Revlon', 'Transamerica', 'Sterling Drug', 'Kellogg', 'Nabisco', 'DuPont', 'Eastman Kodak',
+        'Quaker Oats', 'Nestle', 'American Brands', 'Toyota Motor Sales U.S.A.', 'Schering-Plough',
+        'Miles Laboratories', 'Clorox', 'CPC International', 'Jos. Schlitz Brewing', 'H. J. Heinz', 'Mars',
+        'Nissan Motor', 'MCA', 'Mattel', 'Trans World', 'Campbell Soup', 'Squibb', 'Liggett Group',
+        'Warner Communications', 'American Express', 'Union Carbide', 'Volkswagen of America'
+    ],
+    'Total Ad Dollars ($MM)': [
+        615, 393, 379, 323, 291, 287, 258, 220, 220, 215, 212, 211, 206, 203, 192, 191, 171, 169, 168, 166, 163,
+        161, 160, 159, 158, 155, 150, 146, 146, 145, 139, 132, 132, 127, 127, 124, 123, 122, 120, 118, 116, 108,
+        108, 107, 105, 102, 101, 95, 92, 92, 91, 89, 88, 87, 86, 84, 80, 78, 78, 73, 72, 72, 72, 70, 66, 66, 66,
+        62, 61, 60, 59, 58, 55, 55, 55
+    ]
+}
+
+df = pd.DataFrame(data)
+
+# Choose the numerical feature for clustering
+X = df['Total Ad Dollars ($MM)'].values.reshape(-1, 1)
+
+# Perform K-means clustering
+K = 5  # Number of clusters
+kmeans = KMeans(n_clusters=K, random_state=42)
+kmeans.fit(X)
+
+# Get cluster labels for each data point
+labels = kmeans.labels_
+
+# Add cluster labels to the dataframe
+df['Cluster'] = labels
+
+# Visualize the clusters
+plt.scatter(df['Total Ad Dollars ($MM)'], np.zeros_like(df['Total Ad Dollars ($MM)']), c=df['Cluster'], cmap='viridis')
+plt.xlabel('Total Ad Dollars ($MM)')
+plt.title('K-means Clustering')
+plt.show()
+
+ 
